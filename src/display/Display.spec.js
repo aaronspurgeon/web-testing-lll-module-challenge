@@ -10,4 +10,8 @@ afterEach(rtl.cleanup);
 //     const wrapper = rtl.render(<Display />)
 //     await wrapper.findAllBy
 // })
-test();
+test("<Display /> snapshot", () => {
+  const wrapper = rtl.render(<Display />);
+
+  expect(wrapper.asFragment()).toMatchSnapshot();
+});

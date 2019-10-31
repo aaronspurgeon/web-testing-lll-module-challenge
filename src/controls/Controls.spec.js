@@ -11,3 +11,14 @@ test("<Controls /> snapshot", () => {
 
   expect(wrapper.asFragment()).toMatchSnapshot();
 });
+
+test("user clicking the button", async () => {
+  const wrapper = rtl.render(<Controls />);
+  await wrapper.findAllByText(/gate/i);
+
+  const lock = wrapper.getByText(/lock/i);
+
+  rtl.act(() => {
+    rtl.fireEvent.click(lock);
+  });
+});
